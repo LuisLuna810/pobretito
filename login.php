@@ -10,25 +10,26 @@
 </head>
 
 <body>
-<div class="login-page">
+    <div class="login-page">
         <div class="form">
             <form class="login-form" method="POST">
-                <input type="text" placeholder="Usuario" />
-                <input type="password" placeholder="Contraseña" />
-                <button>Ingresar</button>
+                <input type="text" name="usuario" placeholder="Usuario" required />
+                <input type="password" name="contraseña" placeholder="Contraseña" required />
+                <button type="submit" name="submit">Ingresar</button>
                 <p class="message">No esta registrado? <a href="\pobretito\registro.php">Crear una cuenta</a></p>
             </form>
-            <?php 
+            <?php
             require_once("class/Ingresar.php");
             if (isset($_POST["submit"])) {
-                $usuario= $_POST['usuario'];
-                $contraseña= $_POST['contraseña'];
-                $login = new DatosIngreso($usuario,$contraseña);
+                $usuario = $_POST['usuario'];
+                $contraseña = $_POST['contraseña'];
+                $login = new DatosIngreso($usuario, $contraseña);
                 $login->ingresar();
             }
             ?>
-            
+
         </div>
     </div>
 </body>
+
 </html>

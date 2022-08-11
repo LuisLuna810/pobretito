@@ -15,15 +15,15 @@ class DatosIngreso extends Conexion{
     public function ingresar()
     {
         $this->conectar_DB();
-        $sql = ("SELECT usuario FROM usuarios WHERE usuario=$this->usuario");
+        $sql = ("SELECT usuario FROM usuarios WHERE usuario= '$this->usuario' AND contraseña= '$this->contraseña' ");
         $resultado = mysqli_query($this->enlace,$sql);
 
         if ($resultado->num_rows == 1) {
             header("Location: \pobretito\index.php");
-            die();
+            session_start();
+            $_SESSION['usuario']= $this->usuario;
         }else{ 
-            include_once("\pobretito\login.php");
-            echo '<script language="javascript">alert("USUARIO INGRESADO NO REGISTRADO");</script>';
+            echo "<div class='alertas'><h3>El nombre de usuario o contraseña son incorrectos</h3></div>";
         } 
         mysqli_free_result($resultado);
         mysqli_close($this->enlace);

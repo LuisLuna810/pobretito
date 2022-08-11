@@ -26,11 +26,5 @@ class DatosRegistro extends Conexion{
             }else{
                 echo "<div class='alertas'><h3>Datos no registrados</h3></div>";
             }
-
-            if(!$query->execute()){
-                echo "<h3>DATOS REGISTRADOS CORRECTAMENTE</h3> <br>";
-            }else{
-                echo "<h3>ERROR: Los datos no se registraron correctamente </h3> <br>";
-            }
     }
 }
